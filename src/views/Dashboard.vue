@@ -10,7 +10,7 @@
                 <span class="text-2xl font-semibold leading-3">Project Saya</span>
             </div>
             <div class="btn-selengkapnya">
-                <router-link to="/project-list">
+                <router-link to="/projects">
                     <button class="bg-red-500 hover:bg-green-700 focus:bg-green-700 focus:ring-4 focus:ring-green-200 focus:outline-none text-white rounded-full px-6 py-2 shadow flex items-center leading-thight">
                         <span class="block text-white font-semibold leading-none tracking-wider">Selengkapnya</span>
                         <svg class="w-4 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -160,9 +160,9 @@
             <div class="lg:col-span-3 search">
                 <!-- SEARCH -->
                 <div class="search flex items-center w-full">
-                    <button class="bg-red-400 hover:bg-green-700 focus:bg-green-700 focus:ring-4 focus:ring-green-200 focus:outline-none text-white flex items-center px-2 py-2 rounded-tl rounded-bl lg:w-1/4 shadow leading-thight">
+                    <button class="bg-red-400 hover:bg-green-700 focus:bg-green-700 focus:ring-4 focus:ring-green-200 focus:outline-none text-white flex items-center px-2 py-2 rounded-tl rounded-bl w-auto shadow leading-thight">
                         <span class="block mr-2 font-semibold text-md">Search</span>
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="w-6 h-6 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <input 
                         type="search" 
@@ -171,7 +171,7 @@
                 </div>
 
                 <div class="task-list py-6 px-4 shadow-lg rounded bg-white mt-4">
-                    <div class="flex lg:flex-row flex-col lg:items-center lg:justify-between justify-start w-full">
+                    <div class="flex lg:flex-row flex-col lg:items-center lg:justify-between w-full">
                         <div class="img-ket flex lg:flex-col">
                             <div class="shadow rounded-full">
                                 <img class="h-8 w-8 rounded-full shadow" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
@@ -188,8 +188,8 @@
                                 </div>
                             </router-link>
                         </div>
-                        <div class="waktu flex flex-col justify-center lg:mt-0 mt-2">
-                            <div class="jam text-lg text-gray-300 font-semibold">12:12 PM</div>
+                        <div class="waktu flex lg:flex-col items-center lg:justify-center lg:mt-0 mt-2">
+                            <div class="jam text-lg text-gray-300 font-semibold lg:mr-0 mr-2">12:12 PM</div>
                             <div class="bg-green-200 text-sm text-green-600 px-2 rounded-full">
                                 3 responses
                             </div>

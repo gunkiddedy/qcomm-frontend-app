@@ -42,7 +42,7 @@ const route = [
 		component: () => import('../views/ProjectNewTask.vue'),
 	},
 	{
-		path: '/project-list',
+		path: '/projects',
 		name: 'ProjectList',
 		component: () => import('../views/ProjectList.vue'),
 	},
@@ -77,7 +77,7 @@ const route = [
 		component: () => import('../views/UserForm.vue'),
 	},
 	{
-		path: '/user-list',
+		path: '/users',
 		name: 'UserList',
 		component: () => import('../views/UserList.vue'),
 	},
@@ -87,17 +87,17 @@ const route = [
 		component: () => import('../views/UserKpi.vue'),
 	},
 	{
-		path: '/category-list',
+		path: '/categories',
 		name: 'CategoryList',
 		component: () => import('../views/CategoryList.vue'),
 	},
 	{
-		path: '/company-list',
+		path: '/companies',
 		name: 'CompanyList',
 		component: () => import('../views/CompanyList.vue'),
 	},
 	{
-		path: '/group-list',
+		path: '/groups',
 		name: 'GroupList',
 		component: () => import('../views/GroupList.vue'),
 	},

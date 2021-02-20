@@ -5,7 +5,7 @@
    		<!-- <HeaderComponent /> -->
 
         <!-- GOJEK PROJEK -->
-        <div class="white-user py-12 bg-white -ml-36 -mr-36">
+        <div class="white-user lg:py-12 py-6 bg-white lg:-mx-36 -mx-4">
             <div class="wraper">
                 <div class="body flex flex-col px-4 items-center">
                     <div class="img-profle rounded-full bg-blue-200 w-64 text-center">
@@ -21,13 +21,13 @@
                         Bergabung sejak 4 tahun 3 bulan yang lalu.
                     </div>
                     <div class="button-tiga flex items-center justify-center px-4 mt-4 mb-12 text-gray-400">
-                        <button class="bg-blue-200 rounded px-6 py-1 text-white font-semibold text-xs cursor-text mr-4">
+                        <button class="bg-blue-200 rounded lg:px-6 px-2 py-1 text-white font-semibold text-xs cursor-text mr-4">
                             Bulan ini
                         </button>
-                        <button class="bg-blue-200 rounded px-6 py-1 text-white font-semibold text-xs cursor-text mr-4">
+                        <button class="bg-blue-200 rounded lg:px-6 px-2 py-1 text-white font-semibold text-xs cursor-text mr-4">
                             Tahun ini
                         </button>
-                        <button class="bg-blue-200 rounded px-6 py-1 text-white font-semibold text-xs cursor-text">
+                        <button class="bg-blue-200 rounded lg:px-6 px-2 py-1 text-white font-semibold text-xs cursor-text">
                             Keseluruhan
                         </button>
                     </div>
@@ -37,13 +37,13 @@
                 </div>
             </div>
             <!-- <div class="w-full h-12 bottom-2 absolute"> -->
-                <svg class="text-indigo-50 h-12 absolute w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
+                <svg class="text-indigo-50 lg:h-12 h-6 absolute w-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
             <!-- </div> -->
         </div>
         
         <!-- PROJECT SCORE -->
         <div class="project-score w-full my-16 px-4">
-            <div class="score flex items-center justify-between">
+            <div class="score flex lg:flex-row flex-col items-center justify-between">
                 <div class="scores flex flex-col items-center border-r border-gray-300 border-dashed px-8">
                     <div class="img-gojek flex-shrink-0 rounded-full bg-blue-200 w-20 h-20 flex items-center justify-center px-4">
                         <svg class="w-8 h-8 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -106,14 +106,14 @@
         <div class="garis border-t border-gray-300 mt-16 mb-8 mx-28"></div>
 
         <!-- TASKS SUMMARY-->
-        <div class="documents flex items-center w-full mt-12 mb-4 px-28 justify-between">
+        <div class="documents flex lg:flex-row flex-col items-center w-full mt-12 mb-4 lg:px-28 px-4 justify-between">
             <div class="font-bold text-lg text-gray-600">Task Summary</div>
             <div class="bg-blue-200 text-purple-500 rounded px-4 py-1 text-sm font-semibold">
                 300 tasks
             </div>
         </div>
 
-        <div class="rincian w-full my-4 px-28 justify-between bg-indigo-50">
+        <div class="rincian w-full my-4 lg:px-28 px-4 justify-between bg-indigo-50">
             <div class="sidebar bg-white rounded px-0 py-4 shadow-lg">
 
                 <div class="sidebar-contain flex items-center justify-between px-4">
@@ -159,17 +159,17 @@
         </div>
 
         <!-- PROJECT SUMMARY-->
-        <div class="documents flex items-center w-full mt-12 mb-4 px-28 justify-between">
+        <div class="documents flex lg:flex-row flex-col items-center w-full mt-12 mb-4 lg:px-28 px-4 justify-between">
             <div class="font-bold text-lg text-gray-600">Project Summary</div>
             <div class="bg-blue-200 text-purple-500 rounded px-4 py-1 text-sm font-semibold">
                 {{ projectCount }}
             </div>
         </div>
 
-        <div class="rincian w-full my-4 px-28 justify-between bg-indigo-50">
+        <div class="rincian w-full my-4 lg:px-28 px-4 justify-between bg-indigo-50">
 
             <div class="project-summary bg-white px-0 py-0 shadow-lg">
-                <div class="sidebar-contain flex items-center justify-between px-4 border-t py-2">
+                <div class="sidebar-contain flex lg:flex-row flex-col lg:items-center justify-between px-4 border-t py-2">
                     <div class="kiri flex flex-col">
                         <div class="title">
                             <span class="font-bold text-purple-700 uppercase text-lg">
@@ -177,7 +177,7 @@
                             </span>
                             <span class="text-xs text-red-500 uppercase font-bold">januari 2021</span>
                         </div>
-                        <div class="isi ml-4 my-2">
+                        <div class="isi lg:ml-4 ml-0 my-2">
                             <ul>
                                 <li class="font-semibold text-gray-400">Quality: 90/100</li>
                                 <li class="font-semibold text-gray-400">Idea: 90/100</li>
@@ -197,7 +197,7 @@
                 </div>
             </div>
             <div class="project-summary bg-white px-0 py-0 shadow-lg">
-                <div class="sidebar-contain flex items-center justify-between px-4 border-t py-2">
+                <div class="sidebar-contain flex lg:flex-row flex-col lg:items-center justify-between px-4 border-t py-2">
                     <div class="kiri flex flex-col">
                         <div class="title">
                             <span class="font-bold text-purple-700 uppercase text-lg">
@@ -205,7 +205,7 @@
                             </span>
                             <span class="text-xs text-red-500 uppercase font-bold">januari 2021</span>
                         </div>
-                        <div class="isi ml-4 my-2">
+                        <div class="isi lg:ml-4 ml-0 my-2">
                             <ul>
                                 <li class="font-semibold text-gray-400">Quality: 90/100</li>
                                 <li class="font-semibold text-gray-400">Idea: 90/100</li>
@@ -234,9 +234,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HeaderComponent from '@/components/HeaderComponent.vue'
-// import FooterComponent from '@/components/FooterComponent.vue'
 import userData from '@/api/userDetail.json'
 export default {
     props: ["id"],

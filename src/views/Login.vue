@@ -16,7 +16,7 @@
             <div class="form md:max-w-md w-2/3 mx-auto pt-4 px-8">
                 <form class="login-form">
                     <div class="bg-white shadow-lg rounded-lg px-8 pt-6 py-8 mb-4 flex flex-col">
-                        <div class="text-red-400 px-4 py-1 font-bold text-center text-sm">
+                        <div v-if="response.length" class="text-red-400 px-4 py-1 font-bold text-center text-sm">
                             {{ response }}
                         </div>
                         <div class="my-8">
@@ -37,9 +37,13 @@
                         <div class="flex items-center justify-center">
                             <button
                                 @click="handleLogin" 
-                                class="bg-yellow-500 hover:bg-green-700 focus:bg-green-700 focus:ring-4 focus:ring-green-200 focus:outline-none text-white font-bold py-3 px-4 rounded-full w-full" 
+                                class="flex items-center justify-center bg-yellow-500 hover:bg-green-700 focus:bg-green-700 focus:ring-4 focus:ring-green-200 focus:outline-none text-white font-bold py-3 px-4 rounded-full w-full" 
                                 type="button">
-                                Login
+                                <svg v-if="isLoging" class="animate-spin mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                                {{ isLoging ? "Processing..." : "Login" }}
                             </button>
                         </div>
                         
@@ -57,7 +61,7 @@
         </div>
 
         <!-- FOOTER -->
-        <div class="flex flex-col absolute bottom-0 w-full">
+        <div class="flex flex-col absolute w-full">
             <div class="footer-small text-gray-800">
                 <svg class="svg" style="pointer-events: none" fill="currentColor" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 75">
                     <g class="b"><path class="c" d="M1963,327H-105V65A2647.49,2647.49,0,0,1,431,19c217.7,3.5,239.6,30.8,470,36,297.3,6.7,367.5-36.2,642-28a2511.41,2511.41,0,0,1,420,48"></path></g>
@@ -88,19 +92,68 @@ export default {
                 email: '',
                 password: '',
             },
-            response: ''
+            response: '',
+            isLoging: false
         }
     },
+    computed: {
+       getUserData: {
+          get: function () {
+            this.response = this.$store.getters["currentUser/userData"];
+          },
+        },
+    },
     methods: {
+        // handleLogin() {
+        //     this.isLoging = true;
+        //     axios.get('/sanctum/csrf-cookie')
+        //         .then((response) => {
+        //             axios.post('/api/login', this.user)
+        //                 .then((response) => {
+        //                     if (response.data.user.role === 'member') {
+        //                         this.$router.push({
+        //                             name: "company-page",
+        //                             params: {
+        //                                 id: response.data.user.id
+        //                             }
+        //                         });
+        //                     } else if (response.data.user.role === 'admin') {
+        //                         this.$router.push({
+        //                             name: "company-list"
+        //                         });
+        //                     }
+        //                     this.isLoging = false;
+        //                     localStorage.setItem('isloggedIn', 'true');
+        //                     localStorage.setItem('username', response.data.user.name);
+        //                     localStorage.setItem('user_id', response.data.user.id);
+        //                     localStorage.setItem('user_role', response.data.user.role);
+        //                 })
+        //                 .catch((error) => {
+        //                     this.errors = error;
+        //                     this.isLoging = false;
+        //                     console.log(this.errors)
+        //                 });
+        //         })
+        //         .catch((error) => {
+        //             this.errors = error.response.data.errors;
+        //         });
+        // },
         handleLogin(e){
             e.preventDefault();
+            this.isLoging = true;
             axios.post("/auth/login", this.user, {
                 headers: {
-                    'appToken': appToken
+                    'Authorization': 'Bearer ' +appToken
                 }
             })
             .then((response) => {
-                this.response = response;
+                if(response.data.status == 200){
+                    this.isLoging = false;
+                    this.$store.dispatch('currentUser/afterLogin', response);
+                    this.$router.push('/');
+                }else{
+                    this.response = response;
+                }
             })
             .catch((error) => {
                 this.response = error;

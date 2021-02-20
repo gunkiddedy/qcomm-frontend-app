@@ -5,13 +5,13 @@
    		<!-- <HeaderComponent /> -->
 
         <!-- ############ PROJECT TITLE ############# -->
-        <div class="project flex items-center justify-between mt-10">
-            <div class="flex items-center justify-start">
+        <div class="project flex lg:flex-row flex-col items-center justify-between mt-10">
+            <div class="flex lg:flex-row flex-col lg:items-center justify-start">
                 <div class="img-gojek rounded-full mr-4 bg-purple-700 w-16 h-16 flex items-center justify-center">
                     <svg class="w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
                 </div>
                 <div class="flex flex-col">
-                    <div class="project-title">
+                    <div class="project-title lg:mt-0 mt-2">
                         <span class="text-2xl font-semibold leading-3">Category</span>
                     </div>
                     <div class="">
@@ -22,14 +22,16 @@
                 </div>
             </div>
 
-            <div class="flex items-center justify-start">
-                <div class="btn-selengkapnya">
-                    <button class="bg-red-500 hover:bg-green-700 focus:ring-4 focus:ring-green-200 focus:outline-none rounded px-6 py-2 shadow flex items-center leading-thight">
+            <div class="flex lg:flex-row flex-col lg:items-center justify-start">
+                <div class="btn-selengkapnya lg:mt-0 mt-2">
+                    <button 
+                        @click="goToCategoryForm"
+                        class="bg-red-500 hover:bg-green-700 focus:ring-4 focus:ring-green-200 focus:outline-none rounded px-6 py-2 shadow flex items-center leading-thight">
                         <svg class="w-4 mt-1 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                         <span class="block text-white font-semibold">Tambah</span>
                     </button>
                 </div>
-                <div class="search flex items-center w-full my-8 px-2">
+                <div class="search flex items-center w-full lg:my-8 my-2 lg:px-2">
                     <button class="bg-red-500 hover:bg-green-700 focus:ring-4 focus:ring-green-200 focus:outline-none text-white flex items-center px-4 py-2 rounded-tl rounded-bl w-1/3 shadow leading-thight">
                         <span class="block mr-2 font-semibold text-md">Search</span>
                         <svg class="w-4 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -42,21 +44,28 @@
             </div>
         </div>
 
+        <div class="loader-page flex justify-center" v-if="loaderPage">
+            <Loader />
+        </div>
+
         <!-- ############ ADVOCASY ############# -->
         <div class="form-project mt-8">
             <div class="w-full my-4 justify-between">
 
-                <div class="mb-6 advocacy bg-white shadow-lg rounded" :class="{'pb-20': clicked1, 'pb-0': !clicked1}">
-                    <div class="title-category-list px-4 py-8 flex items-center justify-between">
+                <div 
+                    v-for="(item, i) in categoryList"
+                    :key="i"
+                    class="mb-6 advocacy bg-white shadow-lg rounded" :class="{'pb-20': clicked1, 'pb-0': !clicked1}">
+                    <div class="title-category-list px-4 py-8 flex lg:flex-row flex-col lg:items-center justify-between">
                         <div class="flex flex-col title-list">
                             <div class="title text-lg text-gray-500 font-semibold">
-                                Advocacy
+                                {{ item.title }}
                             </div>
                             <div class="sub text-gray-400 text-sm font-semibold">
-                                Sub categories: N/A 
+                                Sub categories: {{ item.description }}
                             </div>
                         </div>
-                        <div class="flex flex-wrap title-tag w-1/4">
+                        <div class="flex flex-wrap lg:mt-0 mt-2 title-tag lg:w-1/4">
                             <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
                                 story pitch
                             </div>
@@ -131,185 +140,7 @@
                         </div>
                     </transition>
                     
-                </div>
-
-                <div class="mb-6 advocacy bg-white shadow-lg rounded" :class="{'pb-20': clicked2, 'pb-0': !clicked2}">
-                    <div class="title-category-list px-4 py-8 flex items-center justify-between">
-                        <div class="flex flex-col title-list">
-                            <div class="title text-lg text-gray-500 font-semibold">
-                                Advocacy
-                            </div>
-                            <div class="sub text-gray-400 text-sm font-semibold">
-                                Sub categories: N/A 
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap title-tag w-1/4">
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
-                                story pitch
-                            </div>
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
-                                editorial opinion
-                            </div>
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
-                                inteligence gathering
-                            </div>
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
-                                insight
-                            </div>
-                        </div>
-                    </div>
-
-                    <div 
-                        @click="clicked2 = !clicked2"
-                        class="jumlah-projek flex items-center justify-between px-4 py-6 cursor-pointer border-t border-b">
-                        <div class="jum-projek flex items-center justify-start">
-                            <div class="icon">
-                                <svg class="w-6 h-6 text-yellow-600" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
-                            </div>
-                            <div class="jumprojek ml-2 text-yellow-600 font-semibold">
-                                4 Projects
-                            </div>
-                        </div>
-                        <div class="icon">
-                            <svg class="w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        </div>
-                    </div>
-                    <transition name="slide">
-                        <div class="isi" v-if="clicked2">
-                            <div class="hide flex items-center justify-between px-8 py-4 border-b">
-                                <div class="text">
-                                    Sengketa Driver dan Perusahaan
-                                </div>
-                                <div class="icon flex items-center justify-start">
-                                    <div class="text mr-2">
-                                        Ongoing
-                                    </div>
-                                    <div class="icon mr-2 rounded-full bg-blue-200 px-2 py-2">
-                                        <svg class="w-5 text-purple-500" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="hide flex items-center justify-between px-8 py-4 border-b">
-                                <div class="text">
-                                    Event Go-Food Di Kemang
-                                </div>
-                                <div class="icon flex items-center justify-start">
-                                    <div class="text mr-2">
-                                        Ongoing
-                                    </div>
-                                    <div class="icon mr-2 rounded-full bg-blue-200 px-2 py-2">
-                                        <svg class="w-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="hide flex items-center justify-between px-8 py-4 border-b">
-                                <div class="text">
-                                    Sengketa Driver dan Perusahaan
-                                </div>
-                                <div class="icon flex items-center justify-start">
-                                    <div class="text mr-2">
-                                        Ongoing
-                                    </div>
-                                    <div class="icon mr-2 rounded-full bg-blue-200 px-2 py-2">
-                                        <svg class="w-5 text-purple-500" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </transition>
-                    
-                </div>
-
-                <div class="mb-6 advocacy bg-white shadow-lg rounded" :class="{'pb-20': clicked3, 'pb-0': !clicked3}">
-                    <div class="title-category-list px-4 py-8 flex items-center justify-between">
-                        <div class="flex flex-col title-list">
-                            <div class="title text-lg text-gray-500 font-semibold">
-                                Advocacy
-                            </div>
-                            <div class="sub text-gray-400 text-sm font-semibold">
-                                Sub categories: N/A 
-                            </div>
-                        </div>
-                        <div class="flex flex-wrap title-tag w-1/4">
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
-                                story pitch
-                            </div>
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
-                                editorial opinion
-                            </div>
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
-                                inteligence gathering
-                            </div>
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
-                                insight
-                            </div>
-                        </div>
-                    </div>
-
-                    <div 
-                        @click="clicked3 = !clicked3"
-                        class="jumlah-projek flex items-center justify-between px-4 py-6 cursor-pointer border-t border-b">
-                        <div class="jum-projek flex items-center justify-start">
-                            <div class="icon">
-                                <svg class="w-6 h-6 text-yellow-600" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
-                            </div>
-                            <div class="jumprojek ml-2 text-yellow-600 font-semibold">
-                                4 Projects
-                            </div>
-                        </div>
-                        <div class="icon">
-                            <svg class="w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        </div>
-                    </div>
-                    <transition name="slide">
-                        <div class="isi" v-if="clicked3">
-                            <div class="hide flex items-center justify-between px-8 py-4 border-b">
-                                <div class="text">
-                                    Sengketa Driver dan Perusahaan
-                                </div>
-                                <div class="icon flex items-center justify-start">
-                                    <div class="text mr-2">
-                                        Ongoing
-                                    </div>
-                                    <div class="icon mr-2 rounded-full bg-blue-200 px-2 py-2">
-                                        <svg class="w-5 text-purple-500" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="hide flex items-center justify-between px-8 py-4 border-b">
-                                <div class="text">
-                                    Event Go-Food Di Kemang
-                                </div>
-                                <div class="icon flex items-center justify-start">
-                                    <div class="text mr-2">
-                                        Ongoing
-                                    </div>
-                                    <div class="icon mr-2 rounded-full bg-blue-200 px-2 py-2">
-                                        <svg class="w-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="hide flex items-center justify-between px-8 py-4 border-b">
-                                <div class="text">
-                                    Sengketa Driver dan Perusahaan
-                                </div>
-                                <div class="icon flex items-center justify-start">
-                                    <div class="text mr-2">
-                                        Ongoing
-                                    </div>
-                                    <div class="icon mr-2 rounded-full bg-blue-200 px-2 py-2">
-                                        <svg class="w-5 text-purple-500" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </transition>
-                    
-                </div>
+                </div>                
 
             </div>
         </div>
@@ -321,21 +152,46 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HeaderComponent from '@/components/HeaderComponent.vue';
-// import FooterComponent from '@/components/FooterComponent.vue';
+const appToken = 'dsadsadsad';
+import Loader from '@/components/Loader.vue'
+import axios from 'axios'
 export default {
-    // components: {
-    //     HeaderComponent,
-    //     FooterComponent
-    // },
+    components: {
+        Loader,
+    },
     data() {
         return {
+            loaderPage: false,
+            categoryList: [],
             clicked1: false,
             clicked2: false,
             clicked3: false,
         }
-    }
+    },
+    mounted() {
+        this.getCategories();
+    },
+    methods: {
+        goToCategoryForm(){
+            this.$router.push('/category-form');
+        },
+        getCategories(){
+            this.loaderPage = true;
+            axios.get('/categories', {
+                headers: {
+                    'Authorization': 'Bearer ' + appToken
+                }
+            })
+            .then((response) => {
+                this.loaderPage = false;
+                this.categoryList = response.data.data;
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        },
+    },
 }
 </script>
 

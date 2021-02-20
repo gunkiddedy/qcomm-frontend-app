@@ -27,23 +27,29 @@
                 </span>
             </div>
 
+            <div class="loader-page flex justify-center" v-if="loaderPage">
+                <Loader />
+            </div>
+
             <!-- ############ IMAGE PROJEk ############# -->
             <div class="image-project mt-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-12 gap-4">
 
-                <div 
+                <div
+                    v-for="(item, i) in projectList"
+                    :key="i" 
                     @click="goToProjectOverview"
                     class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
                     <!-- IMAGE CARD -->
                     <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
+                        <img src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="" class="object-contain w-full rounded-t">
                     </div>
                     <!-- TEXT CARD -->
                     <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
                         <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get
+                            {{ item.title }}
                         </div>
                         <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
+                            {{ item.description }}
                         </div>
                     </div>
                     <!-- FOOTER CARD -->
@@ -54,477 +60,16 @@
                             </div>
                             <div class="flex flex-col py-2">
                                 <span class="text-sm font-semibold">
-                                    Bank Mandiri
+                                    {{ item.title }}
                                 </span>
                                 <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
+                                    {{ item.updatedAt }}
                                 </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div 
-                    @click="goToProjectOverview"
-                    class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                    <!-- IMAGE CARD -->
-                    <div class="img-card-img">
-                        <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                    </div>
-                    <!-- TEXT CARD -->
-                    <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
-                        <div class="img-title text-lg font-semibold">
-                            Mandiri Run 2021 Get Spirit of Year
-                        </div>
-                        <div class="img-desc text-xs font-base">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                        </div>
-                    </div>
-                    <!-- FOOTER CARD -->
-                    <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                        <div class="footer-contain flex items-center justify-around">
-                            <div class="flex-shrink-0 shadow rounded-full mr-2">
-                                <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                            </div>
-                            <div class="flex flex-col py-2">
-                                <span class="text-sm font-semibold">
-                                    Bank Mandiri
-                                </span>
-                                <span class="text-xs act-time">
-                                    Aktifitas terakhir 1 jam yang lalu
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
 
             </div>
 
@@ -566,20 +111,37 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import HeaderComponent from '@/components/HeaderComponent.vue';
-// import FooterComponent from '@/components/FooterComponent.vue';
+const appToken = 'asdsada12313';
+import axios from 'axios'
+import Loader from '@/components/Loader'
 export default {
-    // components: {
-    //     HeaderComponent,
-    //     FooterComponent
-    // },
+    components: { Loader },
     data() {
         return {
-            profileClicked: false,
+            loaderPage: false,
+            projectList: []
         }
     },
+    mounted() {
+        this.getProjects();
+    },
     methods: {
+        getProjects(){
+            this.loaderPage = true;
+            axios.get('/projects', {
+                headers: {
+                    'Authorization': 'Bearer ' + appToken
+                }
+            })
+            .then((response) => {
+                this.loaderPage = false;
+                this.projectList = response.data.data;
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        },
         goToProjectOverview(){
             this.$router.push('/project-overview')
         }
