@@ -35,7 +35,7 @@
             <div class="image-project mt-8 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 md:gap-12 gap-4">
 
                 <div
-                    v-for="(item, i) in projectList"
+                    v-for="i in 9"
                     :key="i" 
                     @click="goToProjectOverview"
                     class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
@@ -46,10 +46,10 @@
                     <!-- TEXT CARD -->
                     <div class="title-card max-h-40 h-40 bg-white flex flex-col py-6 px-6">
                         <div class="img-title text-lg font-semibold">
-                            {{ item.title }}
+                            item title
                         </div>
                         <div class="img-desc text-xs font-base">
-                            {{ item.description }}
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id enim et nesciunt labore quam maiores, officiis delectus aliquam, nostrum, blanditiis ad possimus minus adipisci laboriosam.
                         </div>
                     </div>
                     <!-- FOOTER CARD -->
@@ -60,17 +60,15 @@
                             </div>
                             <div class="flex flex-col py-2">
                                 <span class="text-sm font-semibold">
-                                    {{ item.title }}
+                                    item title
                                 </span>
                                 <span class="text-xs act-time">
-                                    {{ item.updatedAt }}
+                                    item update dAt
                                 </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
-
             </div>
 
             <!-- ########## PAGINATION ########## -->
@@ -111,36 +109,23 @@
 </template>
 
 <script>
-const appToken = 'asdsada12313';
-import axios from 'axios'
 import Loader from '@/components/Loader'
+
 export default {
     components: { Loader },
     data() {
         return {
-            loaderPage: false,
-            projectList: []
+            loaderPage: true
         }
     },
     mounted() {
-        this.getProjects();
+        this.showLoader(1200)
     },
     methods: {
-        getProjects(){
-            this.loaderPage = true;
-            axios.get('/projects', {
-                headers: {
-                    'Authorization': 'Bearer ' + appToken
-                }
-            })
-            .then((response) => {
-                this.loaderPage = false;
-                this.projectList = response.data.data;
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        showLoader(time) {
+            setTimeout(() => {
+                this.loaderPage = false
+            }, time);
         },
         goToProjectOverview(){
             this.$router.push('/project-overview')

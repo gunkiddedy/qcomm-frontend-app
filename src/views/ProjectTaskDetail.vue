@@ -30,7 +30,7 @@
 
                     <div class="image-left flex items-center justify-start lg:mb-0 mb-2">
                         <div class="img-gojek flex-shrink-0 rounded-full">
-                            <img src="https://pbs.twimg.com/media/EAKvmBZUIAUeWSN.jpg" class="rounded-full w-12">
+                            <img src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" class="rounded-full h-12 w-12">
                         </div>
                         <div class="flex flex-col px-2 text-gray-400">
                             <div class="title text-sm font-bold">

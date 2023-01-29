@@ -1,10 +1,5 @@
 <template>
     <div id="app" class="aa">
-
-        <!-- ############ HEADER APP ############# -->
-   		<!-- <HeaderComponent /> -->
-
-        <!-- ############ PROJECT SAYA ############# -->
         <div class="project flex items-center justify-between mt-10">
             <div class="project-title">
                 <span class="text-2xl font-semibold leading-3">Project Saya</span>
@@ -18,20 +13,16 @@
                 </router-link>
             </div>
         </div>
-
-        <!-- ############ PROJECT AKTIF TITLE SMALL ############# -->
         <div class="">
             <span class="text-md font-base">
                 Project aktif yang sedang berjalan
             </span>
         </div>
 
-        <!-- ############ IMAGE PROJEk ############# -->
         <div class="image-project mt-8 grid lg:grid-cols-4 gap-12">
-
-            <!-- CARD -->
-            <!-- hover:scale-110 -->
-            <div @click="toProjectOverview" class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
+            <div 
+                v-for="i in 4" :key="i"
+                @click="toProjectOverview" class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
                 <div class="img-card-img">
                     <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
                 </div>
@@ -59,100 +50,10 @@
                     </div>
                 </div>
             </div>
-            <!-- CARD -->
-            <div @click="toProjectOverview" class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                <div class="img-card-img">
-                    <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                </div>
-                <div class="title-card max-h-40 h-40 flex flex-col py-6 px-6 bg-white">
-                    <div class="img-title text-lg font-semibold">
-                        Mandiri Run 2021 Get
-                    </div>
-                    <div class="img-desc text-xs font-base">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                    </div>
-                </div>
-                <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                    <div class="footer-contain flex items-center justify-around">
-                        <div class="flex-shrink-0 shadow rounded-full mr-2">
-                            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                        </div>
-                        <div class="flex flex-col py-2">
-                            <span class="text-sm font-semibold">
-                                Bank Mandiri
-                            </span>
-                            <span class="text-xs act-time">
-                                Aktifitas terakhir 1 jam yang lalu
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- CARD -->
-            <div @click="toProjectOverview" class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                <div class="img-card-img">
-                    <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                </div>
-                <div class="title-card max-h-40 h-40 flex flex-col py-6 px-6 bg-white">
-                    <div class="img-title text-lg font-semibold">
-                        Mandiri Run 2021 Get
-                    </div>
-                    <div class="img-desc text-xs font-base">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                    </div>
-                </div>
-                <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                    <div class="footer-contain flex items-center justify-around">
-                        <div class="flex-shrink-0 shadow rounded-full mr-2">
-                            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                        </div>
-                        <div class="flex flex-col py-2">
-                            <span class="text-sm font-semibold">
-                                Bank Mandiri
-                            </span>
-                            <span class="text-xs act-time">
-                                Aktifitas terakhir 1 jam yang lalu
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- CARD -->
-            <div @click="toProjectOverview" class="card rounded shadow-lg relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-100">
-                <div class="img-card-img">
-                    <img src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" class="object-contain w-full rounded-t">
-                </div>
-                <div class="title-card max-h-40 h-40 flex flex-col py-6 px-6 bg-white">
-                    <div class="img-title text-lg font-semibold">
-                        Mandiri Run 2021 Get
-                    </div>
-                    <div class="img-desc text-xs font-base">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, quis.
-                    </div>
-                </div>
-                <div class="footer-card bg-gray-100 px-6 rounded-b py-1">
-                    <div class="footer-contain flex items-center justify-around">
-                        <div class="flex-shrink-0 shadow rounded-full mr-2">
-                            <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1551721434-8b94ddff0e6d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=401&q=80" alt="">
-                        </div>
-                        <div class="flex flex-col py-2">
-                            <span class="text-sm font-semibold">
-                                Bank Mandiri
-                            </span>
-                            <span class="text-xs act-time">
-                                Aktifitas terakhir 1 jam yang lalu
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
 
-        <!-- ############ GARIS ############# -->
         <div class="garis border-t border-gray-300 mt-24 mb-8"></div>
 
-        <!-- ############ SIDEBAR AND SEARCH ############# -->
         <div class="wrap-second-content grid lg:grid-cols-4 gap-12">
             <!-- SIDEBAR -->
             <MiniSidebarComponent />

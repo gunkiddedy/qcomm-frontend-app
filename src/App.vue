@@ -1,61 +1,33 @@
 <template>
 	<div
 		id="app" 
-		class="lg:px-36 px-4 app-route overflow-x-hidden" 
-		:class="{'bg-indigo-50': !isLoginPage, 'bg-purple-700': isLoginPage}">
-
-		<div v-if="!isLoginPage">
-			<HeaderComponent />
+		class="app-route overflow-x-hidden bg-indigo-50 min-h-screen flex flex-col max-w-screen-2xl m-auto">
+		<HeaderComponent />
+		<div class="px-8">
+			<transition name="fade">
+				<router-view></router-view>
+			</transition>
 		</div>
-
-		<transition name="fade">
-			<router-view></router-view>
-		</transition>
-
-		<span hidden>{{ checkRoute }}</span>
-
-		<div v-if="!isLoginPage">
-			<FooterComponent />
-		</div>
-
+		<FooterComponent />
 	</div>
 </template>
 
 <script>
 
-window.onbeforeunload = function(){
-    return "Are you sure you want to close the window?";
-}
+// window.onbeforeunload = function(){
+//     return "Are you sure you want to close the window?";
+// }
 
 import HeaderComponent from '@/components/HeaderComponent.vue'
 import FooterComponent from '@/components/FooterComponent.vue'
 export default {
 	components: {
-        HeaderComponent,
-        FooterComponent
-    },
-	data() {
-		return {
-			isLoginPage: false,
-			// transitionName: 'fade',
-		}
+		HeaderComponent,
+		FooterComponent
 	},
-	// watch: {
-	// 	'$route' (to, from) {
-	// 		const toDepth = to.path.split('/').length
-	// 		const fromDepth = from.path.split('/').length
-	// 		this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
-	// 	}
-	// },
-	computed: {
-		checkRoute(){
-			if(this.$route.name =='Login'){
-				this.isLoginPage = true;
-			}else{
-				this.isLoginPage = false;
-			}
-		}
-	},
+	mounted() {
+		console.log('api key', process.env.API_KEY)
+	}
 }
 </script>
 

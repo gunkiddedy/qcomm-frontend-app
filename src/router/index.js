@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Dashboard from '../views/Dashboard.vue'
-import Login from '../views/Login.vue'
+// import Login from '../views/Login.vue'
 
 Vue.use(VueRouter)
 
@@ -11,11 +11,11 @@ const route = [
 		name: 'Dashboard',
 		component: Dashboard
 	},
-	{
-		path: '/login',
-		name: 'Login',
-		component: Login
-	},
+	// {
+	// 	path: '/login',
+	// 	name: 'Login',
+	// 	component: Login
+	// },
 	{
 		path: '/project-overview',
 		name: 'ProjectOverview',

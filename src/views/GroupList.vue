@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class="group-list">
+    <div id="app" class="group-list min-h-screen">
 
         <!-- ############ HEADER APP ############# -->
    		<!-- <HeaderComponent /> -->
@@ -53,7 +53,7 @@
             <div class="w-full my-4">
                 <!-- LOOP -->
                 <div 
-                    v-for="(item, i) in groupList"
+                    v-for="i in 1"
                     :key="i"
                     class="main-wrap mb-6 bg-white shadow-lg rounded">
                     <div 
@@ -61,11 +61,11 @@
                         <div class="flex flex-col title-list">
                             <!-- TITLE -->
                             <div class="title text-lg text-gray-500 font-semibold">
-                                {{ item.title }}
+                                Lorem ipsum dolor sit amet.
                             </div>
                             <!-- DESCRIPTION -->
                             <div class="sub text-gray-400 text-sm font-semibold">
-                                {{ item.description }} 
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, iste inventore, asperiores aliquam distinctio officiis laborum aspernatur architecto maxime ad qui labore! Ratione adipisci magnam architecto ab nemo natus temporibus.
                             </div>
                             
                             <!-- 3 BUTTONS -->
@@ -84,7 +84,7 @@
                         <!-- TIME -->
                         <div class="w-1/4">
                             <span class="waktu bg-green-200 text-green-600 text-xs rounded-full px-4">
-                                {{ item.createdAt }}
+                                item createdAt
                             </span>
                         </div>
                     </div>
@@ -179,7 +179,7 @@
                                     </div>
                                     <div class="kanan flex flex-wrap w-1/5 py-4 justify-end">
                                         <div class="datetime">
-                                            <span class="text-gray-400 font-semibold">
+                                            <span class="text-gray-400 font-semibold text-xs mr-2">
                                                 12/01/2021 12:13 PM
                                             </span>
                                         </div>
@@ -191,7 +191,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="broadcast px-4 py-0">
+                            <div class="broadcast px-4 pb-5">
                                 <div class="hover hover:bg-indigo-50 border-b flex items-start justify-between px-4 py-4 cursor-pointer">
                                     <div class="kiri flex flex-col px-4 py-4 w-4/5">
                                         <div class="judul font-semibold text-gray-500">
@@ -213,9 +213,9 @@
                                     </div>
                                     <div class="kanan flex flex-wrap w-1/5 py-4 justify-end">
                                         <div class="datetime">
-                                            <span class="text-gray-400 font-semibold">
+                                            <span class="text-gray-400 font-semibold text-xs mr-2">
                                                 12/01/2021 12:13 PM
-                                            </span>
+                                            </span>b
                                         </div>
                                         <div class="status w-30-persen max-w-xs">
                                             <span class="bg-green-200 text-green-600 rounded-full px-2 text-xs">
@@ -252,32 +252,20 @@ export default {
             showMember: false,
             showBroadcast2: false,
             showMember2: false,
-            loaderPage: false,
-            groupList: []
+            loaderPage: true,
         }
     },
     mounted() {
-        this.getGroups();
+        this.showLoader(1000);
     },
     methods: {
+        showLoader(time) {
+            setTimeout(() => {
+                this.loaderPage = false
+            }, time);
+        },
         goToGroupForm(){
             this.$router.push('/group-form');
-        },
-        getGroups(){
-            this.loaderPage = true;
-            axios.get('/groups', {
-                headers: {
-                    'Authorization': 'Bearer ' + appToken
-                }
-            })
-            .then((response) => {
-                this.loaderPage = false;
-                this.groupList = response.data.data;
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
         },
         clickMember(){
             this.showBroadcast = false;
