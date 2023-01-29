@@ -252,7 +252,7 @@ export default {
     methods: {
         getUserList(){
             this.loaderPage = true;
-            axios.get(`/user/${this.id}`, {
+            axios.get(`https://dummyapi.io/data/v1/user/${this.id}`, {
                 headers: {
                     'app-id': '63d66bd0a749d6873338190e'
                 }
