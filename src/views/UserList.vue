@@ -135,7 +135,7 @@ export default {
         },
         getUserList(){
             this.loaderPage = true;
-            axios.get('/user?limit=10', {
+            axios.get('https://dummyapi.io/data/v1/user?limit=10', {
                 headers: {
                     'app-id': '63d66bd0a749d6873338190e'
                 }
