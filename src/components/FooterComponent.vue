@@ -1,10 +1,10 @@
 <template>
-    <div class="flex flex-col -mx-36 px-36">
+    <div class="flex flex-col px-8">
 
-        <div v-if="!isUserPage" class="footer-small lg:-mx-36 -mx-4 mt-0 text-gray-800 absolute w-full lg:h-12 h-6">
+        <!-- <div v-if="!isUserPage" class="footer-small lg:-mx-36 -mx-4 mt-0 text-gray-800 absolute w-full lg:h-12 h-6">
             <svg class="w-full lg:h-12 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor">
             <path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
-        </div>
+        </div> -->
 
         <div class="footer-app bg-gray-800 -mx-36 px-36 lg:mt-12 mt-6 text-gray-400 pb-8">
             <div class="grid lg:grid-cols-3 mt-12">

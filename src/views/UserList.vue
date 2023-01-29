@@ -58,18 +58,18 @@
             <div
                 v-for="(item, i) in userList"
                 :key="i"
-                @click="goToUserProfile(item.userId)" 
+                @click="goToUserProfile(item.id)" 
                 class="card rounded-lg shadow-lg bg-white relative cursor-pointer transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
 
                 <div class="label-role bg-gray-900 opacity-70 py-1 px-2 text-white absolute mt-2 right-0 rounded-l-md">
-                    {{ item.role }}
+                    {{ item.firstName }}
                 </div>
 
                 <!-- IMAGE CARD -->
                 <div class="img-card-img flex items-center justify-center px-2 py-2">
                     <img 
-                        :src="item.profilePictureUrl" 
-                        :alt="item.userId"
+                        :src="item.picture" 
+                        :alt="item.id"
                         class="rounded-full w-60">
                 </div>
 
@@ -78,13 +78,14 @@
                     <div class="footer-contain flex items-center justify-around">
                         <div class="flex flex-col py-2">
                             <span class="text-sm font-semibold text-gray-500">
-                                {{ item.fullName }}
+                                {{ item.firstName+ ' '+ item.lastName}} 
                             </span>
                             <!-- <span class="text-xs act-time text-gray-400">
                                 Aktifitas terakhir 1 jam yang lalu
                             </span> -->
                             <span class="text-xs act-time text-gray-400">
-                                {{ item.lastActivityAt }}
+                                <!-- {{ item.lastActivityAt }} -->
+                                item.lastActivityAt
                             </span>
                         </div>
                     </div>
@@ -105,7 +106,6 @@
 <script>
 import axios from 'axios'
 import Loader from '@/components/Loader.vue'
-const APP_ID = '6027c83b1a75fe2bb9fd75f4';
 export default {
     components: {
         Loader
@@ -135,14 +135,15 @@ export default {
         },
         getUserList(){
             this.loaderPage = true;
-            axios.get('/users', {
+            axios.get('/user?limit=10', {
                 headers: {
-                    'app-id': APP_ID
+                    'app-id': '63d66bd0a749d6873338190e'
                 }
             })
             .then((response) => {
                 this.loaderPage = false;
                 this.userList = response.data.data;
+                this.$store.dispatch('currentUser/getData', response.data.data);
                 console.log(response.data);
             })
             .catch((error) => {

@@ -9,13 +9,13 @@
             <div class="wraper">
                 <div class="body flex flex-col px-4 items-center">
                     <div class="img-profle rounded-full bg-blue-200 w-64 text-center">
-                        <img class="object-contain rounded-full w-full" :src="userDetail.profilePictureUrl" alt="img-user">
+                        <img class="object-contain rounded-full w-full" :src="userDetail.picture" alt="img-user">
                     </div>
                     <div class="title text-2xl text-center mt-4 font-bold text-gray-500" >
-                        {{ userDetail.fullName }}
+                        {{ userDetail.firstName+ ' '+ userDetail.lastName }}
                     </div>
                     <div class="role text-center text-lg px-12 mt-2 font-bold text-gray-400">
-                        {{ userDetail.role }}
+                        {{ userDetail.title }}
                     </div>
                     <div class="bergabung flex items-center justify-center px-4 mt-4 mb-8 text-gray-400">
                         Bergabung sejak 4 tahun 3 bulan yang lalu.
@@ -191,7 +191,7 @@
                             Gojek Indonesia
                         </div>
                         <div class="img-gojek flex-shrink-0 rounded-full bg-gray-200 px-2 py-2">
-                            <img src="https://pbs.twimg.com/media/EAKvmBZUIAUeWSN.jpg" class="rounded-full w-12">
+                            <img :src="userDetail.picture" class="rounded-full h-12 w-12">
                         </div>
                     </div>
                 </div>
@@ -219,7 +219,7 @@
                             Gojek Indonesia
                         </div>
                         <div class="img-gojek flex-shrink-0 rounded-full bg-gray-200 px-2 py-2">
-                            <img src="https://pbs.twimg.com/media/EAKvmBZUIAUeWSN.jpg" class="rounded-full w-12">
+                            <img :src="userDetail.picture" class="rounded-full h-12 w-12">
                         </div>
                     </div>
                 </div>
@@ -234,42 +234,37 @@
 </template>
 
 <script>
-import userData from '@/api/userDetail.json'
+import axios from 'axios'
+
 export default {
     props: ["id"],
-    // components: {
-    //     HeaderComponent,
-    //     FooterComponent
-    // },
     data() {
         return {
             userId: this.id,
             profileClicked: false,
-            userDetail: userData.data,
-            projectCount: 0,
+            userDetail: '',
+            projectCount: 12,
         }
     },
     mounted() {
-        this.countProject();
-        // this.isAuthenticated();
+        this.getUserList();
     },
     methods: {
-        countProject(){
-            let counter = userData.data.performance.length;
-
-            if(counter >= 2)
-                this.projectCount = counter + ' Projects';
-            else if(counter == 1)
-                this.projectCount = counter + ' Project';
-            else
-                this.projectCount = 0 +' Project';
-
-            console.log(userData.data.performance);
-        },
-        isAuthenticated(){
-            if(!this.userId){
-                this.$router.push('/login');
-            }
+        getUserList(){
+            this.loaderPage = true;
+            axios.get(`/user/${this.id}`, {
+                headers: {
+                    'app-id': '63d66bd0a749d6873338190e'
+                }
+            })
+            .then((response) => {
+                this.loaderPage = false;
+                this.userDetail = response.data;
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
         }
     },
 }

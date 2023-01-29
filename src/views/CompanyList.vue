@@ -1,5 +1,5 @@
 <template>
-    <div id="app" class="company-list">
+    <div id="app" class="company-list min-h-screen">
 
         <!-- ############ HEADER APP ############# -->
    		<!-- <HeaderComponent /> -->
@@ -53,16 +53,16 @@
             <div class="w-full my-4 justify-between">
 
                 <div 
-                    v-for="(item, i) in companyList"
+                    v-for="i in 3"
                     :key="i"
                     class="mb-6 advocacy bg-white shadow-lg rounded" :class="{'pb-20': clicked1, 'pb-0': !clicked1}">
                     <div class="title-category-list px-4 py-8 flex items-start justify-between">
                         <div class="flex flex-col title-list">
                             <div class="title text-lg text-gray-500 font-semibold">
-                                {{ item.title }}
+                               Lorem ipsum dolor sit amet.
                             </div>
                             <div class="sub text-gray-400 text-sm font-semibold">
-                                {{ item.description }} 
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo magni laudantium nesciunt tempore incidunt quo qui obcaecati consequuntur delectus non beatae officiis vel iste libero error repudiandae, voluptatibus esse illo?
                             </div>
                             
                             <div class="btn flex items-center justify-start my-4">
@@ -75,7 +75,7 @@
                             </div>
                             <div class="w-1/2">
                                 <span class="waktu bg-green-200 text-green-600 text-xs rounded-full px-4">
-                                    {{ item.createdAt }}
+                                    item createdAt
                                 </span>
                             </div>
 
@@ -83,8 +83,7 @@
                         <div class="logo-company w-1/4">
                             <img 
                                 class="rounded-lg"
-                                :src="item.profilePictureUrl" 
-                                :alt="item.profilePictureUrl">
+                                src="https://images.unsplash.com/photo-1582346992845-c963d5b0ba0d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80">
                         </div>
                     </div>
 
@@ -171,33 +170,13 @@ export default {
             clicked1: false,
             clicked2: false,
             clicked3: false,
-            companyList: [],
             loaderPage: false,
         }
-    },
-    mounted() {
-        this.getCompanies();
     },
     methods: {
         goToCompanyForm(){
             this.$router.push('/company-form');
-        },
-        getCompanies(){
-            this.loaderPage = true;
-            axios.get('/companies', {
-                headers: {
-                    'Authorization': 'Bearer ' + appToken
-                }
-            })
-            .then((response) => {
-                this.loaderPage = false;
-                this.companyList = response.data.data;
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        },
+        }
     },
 }
 </script>

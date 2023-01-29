@@ -1,5 +1,5 @@
 <template>
-    <div class="header-component bg-white -mx-36 px-36">
+    <div class="header-component bg-white px-8">
 
         <!-- MOBILE -->
         <div class="w-16 h-16 flex justify-center items-center text-gray-600 md:hidden">
@@ -51,14 +51,14 @@
 
         <!-- desktop -->
         <nav class="bg-white md:block hidden">
-            <div class="max-w-7xl mx-auto">
+            <div class="mx-auto">
                 <div class="flex items-center justify-between h-20">
                     <!-- <div class="flex items-center justify-between"> -->
                         <div class="flex-shrink-0">
                             <!-- <img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow"> -->
                             <router-link to="/">
                                 <span class="company text-purple-700 hover:text-green-600 text-2xl font-bold">
-                                    QComm PM
+                                    The Company
                                 </span>
                             </router-link>
                         </div>
@@ -160,7 +160,7 @@
                                     <div 
                                         @click="clickManage = !clickManage"
                                         v-if="clickManage" 
-                                        class="dropdown bg-white rounded px-0 shadow z-20 w-1/6 absolute mt-8">
+                                        class="dropdown bg-white rounded px-0 shadow z-20 w-1/6 absolute mt-8 right-24">
                                         <div class="sidebar-contain flex flex-col px-2 py-8">
                                             <!-- ACCOUNTS -->
                                             <div class="title flex flex-col items-center">
@@ -169,13 +169,13 @@
                                                 </div>
 
                                                 <router-link to="/users" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
-                                                    Daftar User
+                                                    User List
                                                 </router-link>
                                                 <router-link to="/projects" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
-                                                    Daftar Project
+                                                    Project List
                                                 </router-link>
                                                 <router-link to="/companies" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
-                                                    Daftar Company
+                                                    Company List
                                                 </router-link>
                                                 <router-link to="/user-kpi" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
                                                     Update KPI
@@ -184,14 +184,14 @@
                                             <!-- SETTINGS -->
                                             <div class="title flex flex-col items-center mt-4">
                                                 <div class="small-title text-purple-600 uppercase text-md font-bold px-4 w-full">
-                                                    setting
+                                                    Setting
                                                 </div>
 
                                                 <router-link to="/groups" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
-                                                    Daftar Group
+                                                    Group List
                                                 </router-link>
                                                 <router-link to="/categories" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
-                                                    Daftar Kategori
+                                                    Category List
                                                 </router-link>
                                             </div>
                                         </div>
@@ -218,7 +218,7 @@
                                     <div 
                                         @click="clickMyAccount = !clickMyAccount"
                                         v-if="clickMyAccount" 
-                                        class="dropdown bg-white rounded px-0 shadow z-20 w-1/6 absolute mt-8">
+                                        class="dropdown bg-white rounded px-0 shadow z-20 w-1/6 absolute mt-8 right-12">
                                         <div class="sidebar-contain flex flex-col px-2 py-8">
                                             <!-- ACCOUNT -->
                                             <div class="title flex flex-col items-center">
@@ -226,20 +226,20 @@
                                                     Account
                                                 </div>
 
-                                                <router-link to="/users/1" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
-                                                    Profil Akun
+                                                <router-link :to="`/users/${userID}`" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
+                                                    Profile
                                                 </router-link>
                                                 <router-link to="/user-form" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
-                                                    Update Akun
+                                                    Update Profile
                                                 </router-link>
                                                 <router-link to="/user-form" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
-                                                    Ubah Password
+                                                    Update Password
                                                 </router-link>
-                                                <div
+                                                <!-- <div
                                                     @click="handleLogout"
                                                     class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
                                                     Logout
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <!-- Support -->
                                             <div class="title flex flex-col items-center mt-4">
@@ -248,10 +248,10 @@
                                                 </div>
 
                                                 <router-link to="/projects" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
-                                                    Bantuan
+                                                    Help
                                                 </router-link>
                                                 <router-link to="/projects" class="isi py-2 hover:bg-indigo-50 px-4 w-full cursor-pointer text-gray-400">
-                                                    Dukungan
+                                                    Support
                                                 </router-link>
                                             </div>
                                         </div>
@@ -262,7 +262,7 @@
                             </div>
                         </div>
 
-                        <div class="logout">
+                        <!-- <div class="logout">
                             <button 
                                 @click="handleLogout"
                                 v-if="isLogin" 
@@ -277,7 +277,7 @@
                                 <span>LOGIN</span>
                                 <svg class="w-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </button>
-                        </div>
+                        </div> -->
                     <!-- </div> -->
                 </div>
             </div>
@@ -297,6 +297,7 @@ export default {
             clickMyAccount: false,
             userStatus: '',
             isLogin: false,
+            userID: '60d0fe4f5311236168a109ca'
         }
     },
     watch: {
@@ -311,6 +312,7 @@ export default {
         }
     },
     computed: {
+        
         rotateIconMyAccount(){
             return {
                 transform: this.clickMyAccount, 
@@ -337,19 +339,6 @@ export default {
                 'duration-300': this.clickMyTask, 
                 'ease-in-out': this.clickMyTask
             }
-        }
-    },
-    mounted() {
-        let userdata = this.$store.getters['currentUser/userData'];
-        userdata.forEach(user => {
-            this.userStatus = user.data.status;
-            console.log('userdata ' +user.data.status);
-        });
-        if(this.userStatus == 200){
-            this.isLogin = true;
-        }else{
-            this.isLogin = false;
-            this.$router.push('/login');
         }
     },
     methods: {

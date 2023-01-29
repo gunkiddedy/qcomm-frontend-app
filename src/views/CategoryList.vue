@@ -53,31 +53,31 @@
             <div class="w-full my-4 justify-between">
 
                 <div 
-                    v-for="(item, i) in categoryList"
+                    v-for="i in 3"
                     :key="i"
                     class="mb-6 advocacy bg-white shadow-lg rounded" :class="{'pb-20': clicked1, 'pb-0': !clicked1}">
                     <div class="title-category-list px-4 py-8 flex lg:flex-row flex-col lg:items-center justify-between">
                         <div class="flex flex-col title-list">
                             <div class="title text-lg text-gray-500 font-semibold">
-                                {{ item.title }}
+                                Lorem ipsum dolor sit.
                             </div>
                             <div class="sub text-gray-400 text-sm font-semibold">
-                                Sub categories: {{ item.description }}
+                                Sub categories: Lorem ipsum dolor sit amet consectetur adipisicing elit. In ullam suscipit ut?
                             </div>
                         </div>
-                        <div class="flex flex-wrap lg:mt-0 mt-2 title-tag lg:w-1/4">
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
+                        <div class="flex flex-wrap gap-2 lg:mt-0 mt-2 title-tag lg:w-1/4">
+                            <span class="tag-rounded text-xs text-white font-semibold bg-green-500 px-2 py-1 rounded-full flex items-center">
                                 story pitch
-                            </div>
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
+                            </span>
+                            <span class="tag-rounded text-xs text-white font-semibold bg-green-500 px-2 py-1 leading-none rounded-full flex items-center">
                                 editorial opinion
-                            </div>
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
+                            </span>
+                            <span class="tag-rounded text-xs text-white font-semibold bg-green-500 px-2 py-1 leading-none rounded-full flex items-center">
                                 inteligence gathering
-                            </div>
-                            <div class="tag-rounded text-xs text-green-500 bg-green-200 px-2 rounded-full mr-2 w-auto my-1">
+                            </span>
+                            <span class="tag-rounded text-xs text-white font-semibold bg-green-500 px-2 py-1 leading-none rounded-full flex items-center">
                                 insight
-                            </div>
+                            </span>
                         </div>
                     </div>
 
@@ -161,36 +161,24 @@ export default {
     },
     data() {
         return {
-            loaderPage: false,
-            categoryList: [],
+            loaderPage: true,
             clicked1: false,
             clicked2: false,
             clicked3: false,
         }
     },
     mounted() {
-        this.getCategories();
+        this.showLoader(1200);
     },
     methods: {
+        showLoader(time) {
+            setTimeout(() => {
+                this.loaderPage = false
+            }, time);
+        },
         goToCategoryForm(){
             this.$router.push('/category-form');
-        },
-        getCategories(){
-            this.loaderPage = true;
-            axios.get('/categories', {
-                headers: {
-                    'Authorization': 'Bearer ' + appToken
-                }
-            })
-            .then((response) => {
-                this.loaderPage = false;
-                this.categoryList = response.data.data;
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-        },
+        }
     },
 }
 </script>

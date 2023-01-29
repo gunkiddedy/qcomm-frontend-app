@@ -1,5 +1,5 @@
 module.exports = {
     devServer: {
-        proxy: 'http://api.dapurtech.com/api'
+        proxy: 'https://dummyapi.io/data/v1'
     } 
 }
